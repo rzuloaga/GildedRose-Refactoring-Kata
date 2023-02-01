@@ -14,13 +14,13 @@ final class BackstagePasses extends Item
     {
         $this->decreaseSellIn();
         $this->increaseQuality();
-        if ($this->sellIn < self::BACKSTAGE_PASSES_DOUBLE_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
+        if ($this->hasToBeSoldInLessThan(self::BACKSTAGE_PASSES_DOUBLE_QUALITY_INCREASE_SELL_IN_THRESHOLD)) {
             $this->increaseQuality();
         }
-        if ($this->sellIn < self::BACKSTAGE_PASSES_TRIPLE_QUALITY_INCREASE_SELL_IN_THRESHOLD) {
+        if ($this->hasToBeSoldInLessThan(self::BACKSTAGE_PASSES_TRIPLE_QUALITY_INCREASE_SELL_IN_THRESHOLD)) {
             $this->increaseQuality();
         }
-        if ($this->sellIn < self::BACKSTAGE_PASSES_QUALITY_RESET_SELL_IN_THRESHOLD) {
+        if ($this->hasToBeSoldInLessThan(self::BACKSTAGE_PASSES_QUALITY_RESET_SELL_IN_THRESHOLD)) {
             $this->resetQuality();
         }
     }

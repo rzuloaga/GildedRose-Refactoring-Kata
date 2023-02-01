@@ -12,7 +12,7 @@ final class StandardItem extends Item
     {
         $this->decreaseSellIn();
         $this->decreaseQuality();
-        if ($this->sellIn < self::STANDARD_ITEM_DOUBLE_QUALITY_DECREASE_SELL_IN_THRESHOLD) {
+        if ($this->hasToBeSoldInLessThan(self::STANDARD_ITEM_DOUBLE_QUALITY_DECREASE_SELL_IN_THRESHOLD)) {
             $this->decreaseQuality();
         }
     }

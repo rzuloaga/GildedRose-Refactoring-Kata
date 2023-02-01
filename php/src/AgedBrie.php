@@ -12,7 +12,7 @@ final class AgedBrie extends Item
     {
         $this->decreaseSellIn();
         $this->increaseQuality();
-        if ($this->sellIn < self::AGED_BRIE_DOUBLE_QUALITY_DECREMENT_SELL_IN_THRESHOLD) {
+        if ($this->hasToBeSoldInLessThan(self::AGED_BRIE_DOUBLE_QUALITY_DECREMENT_SELL_IN_THRESHOLD)) {
             $this->increaseQuality();
         }
     }

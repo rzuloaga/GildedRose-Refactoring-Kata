@@ -36,14 +36,14 @@ class GildedRoseTest extends TestCase
     {
         $item = ItemFactory::basedOn('foo', 10, 0);
         $this->updateQuality($item);
-        $this->assertSame(9, $item->sellIn);
+        $this->assertSame(9, $item->sellIn->value());
     }
 
     public function testSellInDecreasesToNegative(): void
     {
         $item = ItemFactory::basedOn('foo', 0, 0);
         $this->updateQuality($item);
-        $this->assertSame(-1, $item->sellIn);
+        $this->assertSame(-1, $item->sellIn->value());
     }
 
     public function testQualityDecreasesBeforeSellInDate(): void
@@ -94,7 +94,7 @@ class GildedRoseTest extends TestCase
         $item = ItemFactory::basedOn('Sulfuras, Hand of Ragnaros', $sellIn, 80);
         $this->updateQuality($item);
         $this->assertSame(80, $item->quality);
-        $this->assertSame($sellIn, $item->sellIn);
+        $this->assertSame($sellIn, $item->sellIn->value());
     }
 
     public function testBackstagePassesQualityIncreasesBefore10DaysBeforeSellInDate(): void

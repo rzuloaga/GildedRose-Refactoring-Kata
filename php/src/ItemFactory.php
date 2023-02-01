@@ -11,10 +11,11 @@ final class ItemFactory
     public static function basedOn(string $name, int $sellIn, int $quality): Item
     {
         $itemName = new ItemName($name);
+        $itemSellIn = new ItemSellIn($sellIn);
 
-        if ($itemName->isAgedBrie()) return new AgedBrie($itemName, $sellIn, $quality);
-        if ($itemName->isBackstagePasses()) return new BackstagePasses($itemName, $sellIn, $quality);
-        if ($itemName->isSulfuras()) return new Sulfuras($itemName, $sellIn, $quality);
-        return new StandardItem($itemName, $sellIn, $quality);
+        if ($itemName->isAgedBrie()) return new AgedBrie($itemName, $itemSellIn, $quality);
+        if ($itemName->isBackstagePasses()) return new BackstagePasses($itemName, $itemSellIn, $quality);
+        if ($itemName->isSulfuras()) return new Sulfuras($itemName, $itemSellIn, $quality);
+        return new StandardItem($itemName, $itemSellIn, $quality);
     }
 }

@@ -11,7 +11,7 @@ abstract class Item implements \Stringable
 
     public function __construct(
         public ItemName $name,
-        public int $sellIn,
+        public ItemSellIn $sellIn,
         public int $quality
     ) {
     }
@@ -25,7 +25,12 @@ abstract class Item implements \Stringable
 
     protected function decreaseSellIn(): void
     {
-        --$this->sellIn;
+        $this->sellIn->decrease();
+    }
+
+    protected function hasToBeSoldInLessThan(int $days): bool
+    {
+        return $this->sellIn->isLessThan($days);
     }
 
     protected function increaseQuality(): void

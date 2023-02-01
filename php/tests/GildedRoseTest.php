@@ -7,6 +7,10 @@ namespace Tests;
 use GildedRose\GildedRose;
 use GildedRose\Item;
 use GildedRose\ItemFactory;
+use GildedRose\ItemQuality;
+use GildedRose\ItemQualityOutOfRangeException;
+use GildedRose\NotArrayOfClassObjectsException;
+use GildedRose\SulfurasItemQuality;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase
@@ -123,5 +127,33 @@ class GildedRoseTest extends TestCase
         $item = ItemFactory::basedOn('Backstage passes to a TAFKAL80ETC concert', $this->randomAfterSellIn(), 10);
         $this->updateQuality($item);
         $this->assertSame(0, $item->quality->value());
+    }
+
+    public function testGildedRoseDoesNotAcceptNotItems(): void
+    {
+        $this->expectException(NotArrayOfClassObjectsException::class);
+
+        new GildedRose([ItemFactory::basedOn('foo', 10, 10), 'bar']);
+    }
+
+    public function testItemQualityDoesNotAcceptValuesOverRange(): void
+    {
+        $this->expectException(ItemQualityOutOfRangeException::class);
+
+        new ItemQuality(random_int(51, 100));
+    }
+
+    public function testItemQualityDoesNotAcceptValuesUnderRange(): void
+    {
+        $this->expectException(ItemQualityOutOfRangeException::class);
+
+        new ItemQuality(random_int(-20, -1));
+    }
+
+    public function testSulfurasItemQualityDoesNotAcceptValuesOutsideRange(): void
+    {
+        $this->expectException(ItemQualityOutOfRangeException::class);
+
+        new SulfurasItemQuality(array_rand([random_int(-20, 79), random_int(81, 100)]));
     }
 }

@@ -14,7 +14,7 @@ final class GildedRose
     ) {
         foreach ($this->items as $item) {
             if (! $item instanceof Item) {
-                throw new NotArrayOfClassObjectsException($item::class, Item::class);
+                throw new NotArrayOfClassObjectsException($item, Item::class);
             }
         }
     }

@@ -6,13 +6,10 @@ namespace GildedRose;
 
 abstract class Item implements \Stringable
 {
-    const MAX_QUALITY = 50;
-    const MIN_QUALITY = 0;
-
     public function __construct(
         public ItemName $name,
         public ItemSellIn $sellIn,
-        public int $quality
+        public ItemQuality $quality
     ) {
     }
 
@@ -35,20 +32,16 @@ abstract class Item implements \Stringable
 
     protected function increaseQuality(): void
     {
-        if ($this->quality < self::MAX_QUALITY) {
-            ++$this->quality;
-        }
+        $this->quality->increase();
     }
 
     protected function decreaseQuality(): void
     {
-        if ($this->quality > self::MIN_QUALITY) {
-            --$this->quality;
-        }
+        $this->quality->decrease();
     }
 
     protected function resetQuality(): void
     {
-        $this->quality = 0;
+        $this->quality->reset();
     }
 }

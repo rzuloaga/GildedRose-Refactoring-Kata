@@ -61,7 +61,7 @@ The project uses composer to install:
 To run the fixture from the php directory:
 
 ```shell
-php .\fixtures\texttest_fixture.php 10
+php ./fixtures/texttest_fixture.php 10
 ```
 
 Change **10** to the required days.

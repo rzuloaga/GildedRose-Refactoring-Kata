@@ -8,21 +8,13 @@ use GildedRose\ValueObject\StringValueObject;
 
 final class ItemFactory
 {
-    const AGED_BRIE = 'Aged Brie';
-    const BACKSTAGE_PASSES = 'Backstage passes to a TAFKAL80ETC concert';
-    const SULFURAS = 'Sulfuras, Hand of Ragnaros';
-
     public static function basedOn(string $name, int $sellIn, int $quality): Item
     {
-        switch ($name) {
-            case self::AGED_BRIE:
-                return new AgedBrie($name, $sellIn, $quality);
-            case self::BACKSTAGE_PASSES:
-                return new BackstagePasses($name, $sellIn, $quality);
-            case self::SULFURAS:
-                return new Sulfuras($name, $sellIn, $quality);
-            default:
-                return new StandardItem($name, $sellIn, $quality);
-        }
+        $itemName = new ItemName($name);
+
+        if ($itemName->isAgedBrie()) return new AgedBrie($itemName, $sellIn, $quality);
+        if ($itemName->isBackstagePasses()) return new BackstagePasses($itemName, $sellIn, $quality);
+        if ($itemName->isSulfuras()) return new Sulfuras($itemName, $sellIn, $quality);
+        return new StandardItem($itemName, $sellIn, $quality);
     }
 }

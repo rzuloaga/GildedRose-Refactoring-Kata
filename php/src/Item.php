@@ -10,7 +10,7 @@ abstract class Item implements \Stringable
     const MIN_QUALITY = 0;
 
     public function __construct(
-        public string $name,
+        public ItemName $name,
         public int $sellIn,
         public int $quality
     ) {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GildedRose;
+namespace GildedRose\Item;
 
 final class BackstagePasses extends Item
 {

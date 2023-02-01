@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Tests;
 
 use GildedRose\GildedRose;
-use GildedRose\Item;
-use GildedRose\ItemFactory;
-use GildedRose\ItemQuality;
-use GildedRose\ItemQualityOutOfRangeException;
-use GildedRose\NotArrayOfClassObjectsException;
-use GildedRose\SulfurasItemQuality;
+use GildedRose\Item\Item;
+use GildedRose\Item\ItemFactory;
+use GildedRose\Item\ItemQuality;
+use GildedRose\Item\SulfurasItemQuality;
+use GildedRose\Exception\ItemQualityOutOfRangeException;
+use GildedRose\Exception\NotArrayOfClassObjectsException;
 use PHPUnit\Framework\TestCase;
 
 class GildedRoseTest extends TestCase

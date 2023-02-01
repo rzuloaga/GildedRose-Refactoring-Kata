@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GildedRose;
+namespace GildedRose\Item;
 
 use GildedRose\ValueObject\IntValueObject;
 use GildedRose\ValueObject\StringValueObject;

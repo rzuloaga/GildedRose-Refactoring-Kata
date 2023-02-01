@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace GildedRose;
+namespace GildedRose\Item;
 
+use GildedRose\Exception\ItemQualityOutOfRangeException;
 use GildedRose\ValueObject\IntValueObject;
 
 class ItemQuality extends IntValueObject

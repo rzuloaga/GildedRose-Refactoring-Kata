@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace GildedRose;
 
+use GildedRose\Exception\NotArrayOfClassObjectsException;
+use GildedRose\Item\Item;
+
 final class GildedRose
 {
     /**

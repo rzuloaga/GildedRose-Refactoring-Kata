@@ -129,6 +129,13 @@ class GildedRoseTest extends TestCase
         $this->assertSame(0, $item->quality->value());
     }
 
+    public function testConjuredDecreasesTwiceAsFastAlways(): void
+    {
+        $item = ItemFactory::basedOn('Conjured Mana Cake', $this->randomSellIn(), 10);
+        $this->updateQuality($item);
+        $this->assertSame(8, $item->quality->value());
+    }
+
     public function testGildedRoseDoesNotAcceptNotItems(): void
     {
         $this->expectException(NotArrayOfClassObjectsException::class);
@@ -155,5 +162,14 @@ class GildedRoseTest extends TestCase
         $this->expectException(ItemQualityOutOfRangeException::class);
 
         new SulfurasItemQuality(array_rand([random_int(-20, 79), random_int(81, 100)]));
+    }
+
+    public function testApprovedFixture(): void
+    {
+        exec('php ./fixtures/texttest_fixture.php 31', $output);
+        $expected = file('./tests/approvals/ApprovalTest.testTestFixture.approved.txt');
+        $expected = array_map(fn ($line) => trim($line, "\n"), $expected);
+        
+        $this->assertEquals($expected, $output);
     }
 }

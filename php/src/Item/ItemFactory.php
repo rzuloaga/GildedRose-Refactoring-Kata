@@ -15,6 +15,7 @@ final class ItemFactory
         if ($itemName->isAgedBrie()) return new AgedBrie($itemName, $itemSellIn, $itemQuality);
         if ($itemName->isBackstagePasses()) return new BackstagePasses($itemName, $itemSellIn, $itemQuality);
         if ($itemName->isSulfuras()) return new Sulfuras($itemName, $itemSellIn, $itemQuality);
+        if ($itemName->isConjured()) return new Conjured($itemName, $itemSellIn, $itemQuality);
         return new StandardItem($itemName, $itemSellIn, $itemQuality);
     }
 }

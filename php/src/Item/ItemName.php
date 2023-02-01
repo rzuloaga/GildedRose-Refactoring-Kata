@@ -11,6 +11,7 @@ final class ItemName extends StringValueObject
     const AGED_BRIE = 'Aged Brie';
     const BACKSTAGE_PASSES = 'Backstage passes to a TAFKAL80ETC concert';
     const SULFURAS = 'Sulfuras, Hand of Ragnaros';
+    const CONJURED = 'Conjured Mana Cake';
 
     public function isAgedBrie(): bool
     {
@@ -25,6 +26,11 @@ final class ItemName extends StringValueObject
     public function isSulfuras(): bool
     {
         return $this->equals(self::SULFURAS);
+    }
+
+    public function isConjured(): bool
+    {
+        return $this->equals(self::CONJURED);
     }
 
     private function equals(self|string $string)
